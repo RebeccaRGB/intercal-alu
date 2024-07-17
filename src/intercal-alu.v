@@ -117,10 +117,7 @@ module intercal_alu(
 			9:  result = mingle16H;
 			10: result = {select16H, select16L};
 			11: result = select32;
-			12: result = 32'h63746150;
-			13: result = 32'h62207968;
-			14: result = 32'h20747365;
-			15: result = 32'h6C726967;
+			default: result = 0;
 		endcase
 	end
 
