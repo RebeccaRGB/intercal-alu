@@ -5,7 +5,7 @@
 
 `default_nettype none
 
-module tt_um_example (
+module tt_um_rebeccargb_intercal_alu (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
@@ -16,10 +16,36 @@ module tt_um_example (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-  // All output pins must be assigned. If not used, assign to 0.
-  assign uo_out  = ui_in + uio_in;  // Example: ou_out is the sum of ui_in and uio_in
-  assign uio_out = 0;
-  assign uio_oe  = 0;
+  reg [31:0] a;
+  reg [31:0] b;
+  wire [31:0] f;
+
+  intercal_alu ayayayayayaya(ui_in[5:2], a, b, f);
+
+  wire [7:0] f8 = (
+    ui_in[1] ?
+    (ui_in[0] ? f[31:24] : f[23:16]) :
+    (ui_in[0] ? f[15:8] : f[7:0])
+  );
+
+  assign uo_out  = f8;
+  assign uio_out = f8;
+  assign uio_oe  = {8{~ui_in[6]}};
+
+  always @(ui_in or uio_in) begin
+    if (~ui_in[7]) begin
+      case (ui_in[5:0])
+        6'h0: a[7:0] <= uio_in;
+        6'h1: a[15:8] <= uio_in;
+        6'h2: a[23:16] <= uio_in;
+        6'h3: a[31:24] <= uio_in;
+        6'h4: b[7:0] <= uio_in;
+        6'h5: b[15:8] <= uio_in;
+        6'h6: b[23:16] <= uio_in;
+        6'h7: b[31:24] <= uio_in;
+      endcase
+    end
+  end
 
   // List all unused inputs to prevent warnings
   wire _unused = &{ena, clk, rst_n, 1'b0};
