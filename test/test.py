@@ -28,19 +28,15 @@ async def test_project(dut):
     A      = 0
     B      = 1
     AND16  = 2
-    AND16H = 3
-    AND32  = 4
-    OR16   = 5
-    OR16H  = 6
-    OR32   = 7
-    XOR16  = 8
-    XOR16H = 9
-    XOR32  = 10
-    SEL16  = 11
-    SEL16H = 12
-    SEL32  = 13
-    INT16  = 14
-    INT16H = 15
+    AND32  = 3
+    OR16   = 4
+    OR32   = 5
+    XOR16  = 6
+    XOR32  = 7
+    INT16L = 8
+    INT16H = 9
+    SEL16  = 10
+    SEL32  = 11
 
     async def alu_write(a, d):
         # Set address and data
@@ -129,7 +125,8 @@ async def test_project(dut):
         await test_alu(SEL32, a, b, y)
 
     async def test_mingle16(a, b, y):
-        await test_alu(INT16, a, b, y)
+        await test_alu(INT16L, a, b, y)
+        await test_alu(INT16H, (a << 16), (b << 16), y)
 
     # Insanity check
     await test_alu(A, 42, 56, 42)

@@ -127,19 +127,19 @@ module intercal_alu(
 			0:  result = a;
 			1:  result = b;
 			2:  result = {unand16(a[31:16]), unand16(a[15:0])};
-			3:  result = {unand16(a[15:0]), unand16(a[31:16])};
-			4:  result = unand32(a);
-			5:  result = {unor16(a[31:16]), unor16(a[15:0])};
-			6:  result = {unor16(a[15:0]), unor16(a[31:16])};
-			7:  result = unor32(a);
-			8:  result = {unxor16(a[31:16]), unxor16(a[15:0])};
-			9:  result = {unxor16(a[15:0]), unxor16(a[31:16])};
-			10: result = unxor32(a);
-			11: result = {select16(a[31:16], b[31:16]), select16(a[15:0], b[15:0])};
-			12: result = {select16(a[15:0], b[15:0]), select16(a[31:16], b[31:16])};
-			13: result = select32(a, b);
-			14: result = mingle16(a[15:0], b[15:0]);
-			15: result = mingle16(a[31:16], b[31:16]);
+			3:  result = unand32(a);
+			4:  result = {unor16(a[31:16]), unor16(a[15:0])};
+			5:  result = unor32(a);
+			6:  result = {unxor16(a[31:16]), unxor16(a[15:0])};
+			7:  result = unxor32(a);
+			8:  result = mingle16(a[15:0], b[15:0]);
+			9:  result = mingle16(a[31:16], b[31:16]);
+			10: result = {select16(a[31:16], b[31:16]), select16(a[15:0], b[15:0])};
+			11: result = select32(a, b);
+			12: result = 32'h63746150;
+			13: result = 32'h62207968;
+			14: result = 32'h20747365;
+			15: result = 32'h6C726967;
 		endcase
 	end
 
