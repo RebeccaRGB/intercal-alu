@@ -2,7 +2,7 @@
 
 As an educational project, it is inevitable that Tiny Tapeout would attract various pedagogical examples of common logic circuits, such as ALUs. While ALUs for common operations such as addition, subtraction, and binary bitwise logic are surprisingly common, it is much rarer to encounter one that can calculate the five operations of the INTERCAL programming language. Due to either the cost-prohibitive nature of Warmenhovian logic gates or general lack of interest, such a feat has never been performed until now. With silicon production finally within reach of the average person, all it takes is one person who happens to have more dollars than sense to design the fabled INTERCAL ALU (Arrhythmic Logic Unit).
 
-The pin assignments for this design are probably as follows. The /OE (output enable) and /WE (write enable) signals are active low, so should be set HIGH by default.
+The pin assignments for this design are roughly as follows. The /OE (output enable) and /WE (write enable) signals are active low, so should be set HIGH by default.
 
 | # | Dedicated Input     | Dedicated Output | Bidirectional I/O          |
 | - | ------------------- | ---------------- | -------------------------- |
