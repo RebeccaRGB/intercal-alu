@@ -133,7 +133,7 @@ The operations supported are listed below. An attempt was made to make it unders
     <td>0</td>
     <td>0</td>
     <td colspan="2"><code>MINGLE16L</code></td>
-    <td colspan="4">AL $ BL</td>
+    <td colspan="4">AL  BL</td>
   </tr>
   <tr>
     <td>9</td>
@@ -142,7 +142,7 @@ The operations supported are listed below. An attempt was made to make it unders
     <td>0</td>
     <td>1</td>
     <td colspan="2"><code>MINGLE16H</code></td>
-    <td colspan="4">AH $ BH</td>
+    <td colspan="4">AH  BH</td>
   </tr>
   <tr>
     <td>10</td>
@@ -175,10 +175,10 @@ These operators perform their respective logical operations on all pairs of adja
 
 Operations 2, 4, and 6 work on the 16-bit halves of the A register independently, while operations 3, 5, and 7 work on the 32-bit whole of the A register.
 
-Operations 8 and 9 correspond to INTERCAL's *interleave* (also called *mingle*) operator, represented by big money ($). From the INTERCAL manual:
+Operations 8 and 9 correspond to INTERCAL's *interleave* (also called *mingle*) operator, represented by big money (). From the INTERCAL manual:
 
 <blockquote>
-The interleave operator takes two 16-bit values and produces a 32-bit result by alternating the bits of the operands. Thus, <code>#65535$#0</code> has the 32-bit binary form 101010....10 or 2863311530 decimal, while <code>#0$#65535</code> = 0101....01 binary = 1431655765 decimal, and <code>#255$#255</code> is equivalent to <code>#65535</code>.
+The interleave operator takes two 16-bit values and produces a 32-bit result by alternating the bits of the operands. Thus, <code>#65535&#36;#0</code> has the 32-bit binary form 101010....10 or 2863311530 decimal, while <code>#0&#36;#65535</code> = 0101....01 binary = 1431655765 decimal, and <code>#255&#36;#255</code> is equivalent to <code>#65535</code>.
 </blockquote>
 
 Operation 8 returns the interleave of the lower halves of A and B, while operation 9 returns the interleave of the upper halves of A and B. (Should the chip fabrication process allow for it, operation 8½ returns the interleave of the middle halves of A and B.)
