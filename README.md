@@ -25,7 +25,7 @@ To read a register or result, set A0 and A1 to the byte address, set S0 through 
 
 The operations supported are listed below. An attempt was made to make it understandable.
 
-![](intercal-alu.svg)
+![](docs/intercal-alu.svg)
 
 Operations 0 and 1 simply return the current value of the A or B register, respectively. This corresponds with the values of S0 through S3 used in write mode. This is not unintentional. This might also explain why S1 through S3 must be LOW in write mode.
 
@@ -92,7 +92,7 @@ The ALU may be used without external hardware, although seeing the output values
 
 ## What is Tiny Tapeout?
 
-Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital and analog designs manufactured on a real chip.
+Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital and analog designs manufactured on a real chip, for better or for worse.
 
 To learn more and get started, visit https://tinytapeout.com.
 
