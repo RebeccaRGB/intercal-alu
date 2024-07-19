@@ -51,10 +51,6 @@ To help understand the select operator, the INTERCAL manual also provides a help
 
 Use of operations 12 and above is not recommended, unless undefined behavior is required.
 
-## How it doesn't work
-
-The ALU does not work using miniature internal combustion engines, subatomic black holes produced through particle collisions, or tarot card readings. Research is ongoing in these areas.
-
 ## How to test
 
 The following example calculations found in the INTERCAL manual should be particularly illuminating.
