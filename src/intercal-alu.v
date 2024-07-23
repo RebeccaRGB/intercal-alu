@@ -99,8 +99,9 @@ module intercal_alu(
 			7: result = unxor32;
 			8: result = mingle16L;
 			9: result = mingle16H;
-			10, 12, 14: result = {select16H, select16L};
-			11, 13, 15: result = select32;
+			10: result = {select16H, select16L};
+			11: result = select32;
+			12, 13, 14, 15: result = 0;
 		endcase
 	end
 
