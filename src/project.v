@@ -32,23 +32,18 @@ module tt_um_rebeccargb_intercal_alu (
   assign uio_out = f8;
   assign uio_oe  = {8{~ui_in[6]}};
 
-  always @(posedge clk) begin
-    if (~rst_n) begin
-      a <= 32'b0;
-      b <= 32'b0;
-    end else if (~ui_in[7]) begin
-      if (ui_in[5:3] == 0) begin
-        case (ui_in[2:0])
-          0: a[7:0] <= uio_in;
-          1: a[15:8] <= uio_in;
-          2: a[23:16] <= uio_in;
-          3: a[31:24] <= uio_in;
-          4: b[7:0] <= uio_in;
-          5: b[15:8] <= uio_in;
-          6: b[23:16] <= uio_in;
-          7: b[31:24] <= uio_in;
-        endcase
-      end
+  always @(ui_in or uio_in) begin
+    if (ui_in[7] == 0 && ui_in[5:3] == 0) begin
+      case (ui_in[2:0])
+        0: a[7:0] <= uio_in;
+        1: a[15:8] <= uio_in;
+        2: a[23:16] <= uio_in;
+        3: a[31:24] <= uio_in;
+        4: b[7:0] <= uio_in;
+        5: b[15:8] <= uio_in;
+        6: b[23:16] <= uio_in;
+        7: b[31:24] <= uio_in;
+      endcase
     end
   end
 
