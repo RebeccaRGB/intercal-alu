@@ -100,25 +100,10 @@ module intercal_alu(
 	wire [31:0] s0  = (b[0]  ? { s1, a[0] } : {1'b0, s1 });
 	wire [31:0] select32 = s0;
 
-	reg [31:0] result;
-	assign f = result;
-
-	always @(s or a or b) begin
-		casez (s)
-			4'b0000: result = a;
-			4'b0001: result = b;
-			4'b0010: result = {unand16H, unand16L};
-			4'b0011: result = unand32;
-			4'b0100: result = {unor16H, unor16L};
-			4'b0101: result = unor32;
-			4'b0110: result = {unxor16H, unxor16L};
-			4'b0111: result = unxor32;
-			4'b1000: result = mingle16L;
-			4'b1001: result = mingle16H;
-			4'b1010: result = {select16H, select16L};
-			4'b1011: result = select32;
-			4'b11??: result = 0;
-		endcase
-	end
+	assign f = (
+		s[3] ? (s[1] ? (s[0] ? select32 : {select16H, select16L}) : (s[0] ? mingle16H : mingle16L)) :
+		s[2] ? (s[1] ? (s[0] ? unxor32 : {unxor16H, unxor16L}) : (s[0] ? unor32 : {unor16H, unor16L})) :
+		(s[1] ? (s[0] ? unand32 : {unand16H, unand16L}) : (s[0] ? b : a))
+	);
 
 endmodule
