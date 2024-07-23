@@ -104,20 +104,20 @@ module intercal_alu(
 	assign f = result;
 
 	always @(s or a or b) begin
-		case (s)
-			0:  result = a;
-			1:  result = b;
-			2:  result = {unand16H, unand16L};
-			3:  result = unand32;
-			4:  result = {unor16H, unor16L};
-			5:  result = unor32;
-			6:  result = {unxor16H, unxor16L};
-			7:  result = unxor32;
-			8:  result = mingle16L;
-			9:  result = mingle16H;
-			10: result = {select16H, select16L};
-			11: result = select32;
-			default: result = 0;
+		casez (s)
+			4'b0000: result = a;
+			4'b0001: result = b;
+			4'b0010: result = {unand16H, unand16L};
+			4'b0011: result = unand32;
+			4'b0100: result = {unor16H, unor16L};
+			4'b0101: result = unor32;
+			4'b0110: result = {unxor16H, unxor16L};
+			4'b0111: result = unxor32;
+			4'b1000: result = mingle16L;
+			4'b1001: result = mingle16H;
+			4'b1010: result = {select16H, select16L};
+			4'b1011: result = select32;
+			4'b11??: result = 0;
 		endcase
 	end
 
