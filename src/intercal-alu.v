@@ -87,7 +87,7 @@ module intercal_alu(
 	reg [31:0] result;
 	assign f = result;
 
-	always @(s or a or b) begin
+	always_comb begin
 		case (s)
 			0: result = a;
 			1: result = b;
